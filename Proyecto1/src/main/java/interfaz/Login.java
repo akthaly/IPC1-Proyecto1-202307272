@@ -23,24 +23,24 @@ public class Login extends JFrame {
         setLayout(null);
         setResizable(false);
 
-        JLabel codigoLabel = new JLabel("Ingrese su Codigo");
-        codigoLabel.setBounds(50, 140, 200, 25);
+        JLabel codigoLabel = new JLabel("Codigo");
+        codigoLabel.setBounds(100, 140, 200, 25);
         add(codigoLabel);
 
         JTextField codigoField = new JTextField();
-        codigoField.setBounds(175, 140, 160, 25);
+        codigoField.setBounds(150, 140, 200, 25);
         add(codigoField);
 
-        JLabel contrasenaLabel = new JLabel("Ingrese su Contrasena");
-        contrasenaLabel.setBounds(30, 180, 200, 25);
+        JLabel contrasenaLabel = new JLabel("Password");
+        contrasenaLabel.setBounds(80, 180, 200, 25);
         add(contrasenaLabel);
 
         JPasswordField contrasenaField = new JPasswordField();
-        contrasenaField.setBounds(175, 180, 160, 25);
+        contrasenaField.setBounds(150, 180, 200, 25);
         add(contrasenaField);
 
-        JButton registroButton = new JButton("Registrarse");
-        registroButton.setBounds(180, 260, 150, 25);
+        JButton registroButton = new JButton("Registrate");
+        registroButton.setBounds(150, 220, 115, 25);
         registroButton.setBackground(new Color(214, 225, 50));
         add(registroButton);
 
@@ -50,8 +50,8 @@ public class Login extends JFrame {
         });
 
 
-        JButton iniciarSesionButton = new JButton("Iniciar Sesión");
-        iniciarSesionButton.setBounds(180, 220, 150, 25); //Ajuste de posición
+        JButton iniciarSesionButton = new JButton("Login");
+        iniciarSesionButton.setBounds(275, 220, 75, 25); //Ajuste de posición
         iniciarSesionButton.setForeground(Color.WHITE); // Ajuste de color de letra
         iniciarSesionButton.setBackground(new Color(43, 191, 19)); // Ajuste de color de boton, con color en RGB
         add(iniciarSesionButton);

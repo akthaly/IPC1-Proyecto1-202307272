@@ -39,7 +39,7 @@ public class InterfazAdministrador extends JFrame {
             if (e.getSource() == btnRegistro){
                 //JOptionPane.showMessageDialog(this, "Inicio de Sesión Correcto");
                 InterfazRegistroDoctor nuevoDoctor = new InterfazRegistroDoctor();
-
+                this.dispose();
 
             }
             else {

@@ -104,7 +104,7 @@ public class InterfazRegistroDoctor extends JFrame{
 
 
 
-        registerButton = new JButton("Registrarrrrrrrr");
+        registerButton = new JButton("Registrar");
         registerButton.setBounds(180, 220, 150, 25);
         registerButton.setForeground(Color.WHITE);
         registerButton.setBackground(new Color(214, 225, 50));
