@@ -1,7 +1,7 @@
 package clases;
 
 public class Doctor extends Usuario{
-
+    public static String codigo = "0001";
     private String nombres;
     private String apellidos;
     private String especialidad;

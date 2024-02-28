@@ -1,6 +1,6 @@
 package interfaz;
 
-import org.example.Main;
+import clases.Administrador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -90,7 +90,7 @@ public class InterfazAdministrador extends JFrame {
         // Crear un modelo de tabla y agregar datos de ejemplo
         String[] columnsNames = {"Codigo", "Nombre", "Apellido", "Género", "Edad", "Especialidad", "Teléfono"};
         // Crear una instancia de JTable con los datos y nombres de columna
-        JTable tablaDoctores = new JTable(Main.datosDoctoresTabla(), columnsNames);
+        JTable tablaDoctores = new JTable(Administrador.datosDoctoresTabla(), columnsNames);
 
         // Crear un JScrollPane para la tabla (permite desplazarse por la tabla si es necesario)
         JScrollPane scrollPane = new JScrollPane(tablaDoctores);

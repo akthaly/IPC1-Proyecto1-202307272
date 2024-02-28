@@ -4,6 +4,7 @@ public class Usuario {
     protected String codigo;
     protected String contrasena;
 
+
     public Usuario(java.lang.String codigo, java.lang.String contrasena) {
         this.codigo = codigo;
         this.contrasena = contrasena;
@@ -15,14 +16,18 @@ public class Usuario {
     }
 
     public java.lang.String getCodigo() {
+
         return codigo;
     }
 
     public void setCodigo(java.lang.String codigo) {
-        this.codigo = codigo;
-    }
 
+        this.codigo = codigo;
+        codigo = "0001";
+
+    }
     public java.lang.String getContrasena() {
+
         return contrasena;
     }
 

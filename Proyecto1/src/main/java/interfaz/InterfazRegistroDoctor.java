@@ -1,6 +1,7 @@
 package interfaz;
 
-import org.example.Main;
+import clases.Administrador;
+import clases.Doctor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,10 +14,10 @@ public class InterfazRegistroDoctor extends JFrame{
     private JTextField especialidadField;
     private JTextField telefonoField;
     private JTextField edadField;
-    private JTextField codigoField;
     private JComboBox<String> genderComboBox;
 
     JButton registerButton;
+
     public InterfazRegistroDoctor(){
 
         initComponents();
@@ -89,9 +90,9 @@ public class InterfazRegistroDoctor extends JFrame{
         codigoLabel.setBounds(390, 170, 80, 25);
         this.add(codigoLabel);
 
-        codigoField = new JTextField();
+        /*codigoField = new JTextField();
         codigoField.setBounds(430, 170, 170, 25);
-        this.add(codigoField);
+        this.add(codigoField);*/
 
         JLabel genderLabel = new JLabel("Género:");
         genderLabel.setBounds(80, 170, 80, 25);
@@ -110,6 +111,7 @@ public class InterfazRegistroDoctor extends JFrame{
         registerButton.setBackground(new Color(214, 225, 50));
         this.add(registerButton);
         registerButton.addActionListener(e -> {
+
             if (e.getSource() == registerButton){
                 String nombres = nombresField.getText();
                 String apellidos = apellidosField.getText();
@@ -117,15 +119,15 @@ public class InterfazRegistroDoctor extends JFrame{
                 String especialidad = especialidadField.getText();
                 String telefono = telefonoField.getText();
                 String edad = edadField.getText();
-                String codigo = "0001";
                 String genero = (String) genderComboBox.getSelectedItem();
-
-                Main.agregarDoctores(codigo, contrasena, nombres, apellidos, especialidad, genero, telefono, edad);
-                Main.contador++;
-
+                Administrador.agregarDoctores(Doctor.codigo, contrasena, nombres, apellidos, especialidad, genero, telefono, edad);
+                int codigoEntero= Integer.parseInt(Doctor.codigo);
+                codigoEntero++;
+                Doctor.codigo=String.format("%04d", codigoEntero);
                 this.dispose();
 
                 InterfazAdministrador ventanaAdministrador = new InterfazAdministrador();
+
 
 
             }
