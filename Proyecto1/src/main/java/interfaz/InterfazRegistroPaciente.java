@@ -1,32 +1,30 @@
 package interfaz;
 
 import clases.Administrador;
-import clases.Doctor;
+import clases.Paciente;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InterfazRegistroDoctor extends JFrame implements ActionListener {
+public class InterfazRegistroPaciente extends JFrame implements ActionListener {
 
     private JTextField nombresField;
     private JTextField apellidosField;
     private JTextField contrasenaField;
-    private JTextField especialidadField;
-    private JTextField telefonoField;
     private JTextField edadField;
     private JComboBox<String> genderComboBox;
 
-    JButton registerButton;
+    JButton botonRegistro;
 
-    public InterfazRegistroDoctor(){
+    public InterfazRegistroPaciente(){
 
         initComponents();
     }
     public void initComponents(){
 
-        this.setTitle("Registro de Doctores");
+        this.setTitle("Registro de Pacientes");
         this.setBounds(650, 400, 650, 300);
         this.setLayout(null);
         this.getContentPane().setBackground(new Color(237, 238, 123));
@@ -35,7 +33,7 @@ public class InterfazRegistroDoctor extends JFrame implements ActionListener {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
 
-        JLabel titleLabel = new JLabel("Registro de Doctores");
+        JLabel titleLabel = new JLabel("Registro de Pacientes");
         titleLabel.setFont(new Font("Kristen ITC", Font.BOLD, 20));
         titleLabel.setBounds(200, 10, 300, 30);
         this.add(titleLabel);
@@ -64,23 +62,6 @@ public class InterfazRegistroDoctor extends JFrame implements ActionListener {
         contrasenaField.setBounds(130, 130, 170, 25);
         this.add(contrasenaField);
 
-
-        JLabel especialidadLabel = new JLabel("Especialidad:");
-        especialidadLabel.setBounds(350, 50, 80, 25);
-        this.add(especialidadLabel);
-
-        especialidadField = new JTextField();
-        especialidadField.setBounds(430, 50, 170, 25);
-        this.add(especialidadField);
-
-        JLabel telefonoLabel = new JLabel("Telefono:");
-        telefonoLabel.setBounds(370, 90, 80, 25);
-        this.add(telefonoLabel);
-
-        telefonoField = new JTextField();
-        telefonoField.setBounds(430, 90, 170, 25);
-        this.add(telefonoField);
-
         JLabel edadLabel = new JLabel("Edad:");
         edadLabel.setBounds(390, 130, 80, 25);
         this.add(edadLabel);
@@ -98,32 +79,30 @@ public class InterfazRegistroDoctor extends JFrame implements ActionListener {
         genderComboBox.setBounds(130, 170, 150, 25);
         this.add(genderComboBox);
 
-        registerButton = new JButton("Registrar");
-        registerButton.setBounds(450, 190, 130, 25);
-        registerButton.setForeground(Color.BLACK);
-        registerButton.setFont(new Font("MV Boli", Font.PLAIN, 18));
-        registerButton.setBackground(new Color(147, 255, 183));
-        this.add(registerButton);
-        registerButton.addActionListener(this);
+        botonRegistro = new JButton("Registrar");
+        botonRegistro.setBounds(450, 190, 130, 25);
+        botonRegistro.setForeground(Color.BLACK);
+        botonRegistro.setFont(new Font("MV Boli", Font.PLAIN, 18));
+        botonRegistro.setBackground(new Color(147, 255, 183));
+        this.add(botonRegistro);
+        botonRegistro.addActionListener(this);
 
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == registerButton){
+        if (e.getSource() == botonRegistro){
             String nombres = nombresField.getText();
             String apellidos = apellidosField.getText();
             String contrasena = contrasenaField.getText();
-            String especialidad = especialidadField.getText();
-            String telefono = telefonoField.getText();
             String edad = edadField.getText();
             String genero = (String) genderComboBox.getSelectedItem();
-            Administrador.agregarDoctores(Doctor.codigo, contrasena, nombres, apellidos, especialidad, genero, telefono, edad);
-            int codigoEntero= Integer.parseInt(Doctor.codigo);
+            Administrador.agregarPacientes(Paciente.codigoPaciente, contrasena, nombres, apellidos, edad, genero);
+            int codigoEntero= Integer.parseInt(Paciente.codigoPaciente);
             codigoEntero++;
-            Doctor.codigo=String.format("%04d", codigoEntero);
-            InterfazAdministrador ventanaAdministrador = new InterfazAdministrador(0);
+            Paciente.codigoPaciente=String.format("%04d", codigoEntero);
+            InterfazAdministrador ventanaAdministrador = new InterfazAdministrador(1);
             this.dispose();
         }
     }

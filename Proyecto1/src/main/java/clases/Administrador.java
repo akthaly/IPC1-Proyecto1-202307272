@@ -7,7 +7,6 @@ public class Administrador extends Usuario{
     private String nombre;
     public Administrador(java.lang.String codigo, java.lang.String contrasena, java.lang.String nombre) {
         super(codigo, contrasena);
-        this.nombre = nombre;
 
     }
     public static Object[][] datosDoctoresTabla(){
@@ -35,5 +34,52 @@ public class Administrador extends Usuario{
 
         listaDoctores.add(new Doctor(codigo, contrasena, nombres, apellidos, especialidad, genero, telefono, edad));
     }
+
+    public static ArrayList<Paciente> listaPacientes = new ArrayList<>();
+
+    public static Object[][] datosPacientesTabla(){
+        int filas = listaPacientes.size();
+        Object[][] tabla = new Object[filas][5];
+
+        for (int i = 0; i < filas; i++){
+            Paciente tempPaciente= listaPacientes.get(i);
+
+            tabla[i][0] = tempPaciente.getCodigo();
+            tabla[i][1] = tempPaciente.getNombre();
+            tabla[i][2] = tempPaciente.getApellido();
+            tabla[i][3] = tempPaciente.getEdad();
+            tabla[i][4] = tempPaciente.getGenero();
+
+        }
+
+        return tabla;
+
+    }
+public static void agregarPacientes(String codigo,String contraseña, String nombre, String apellido, String edad, String genero){
+        listaPacientes.add(new Paciente(codigo, contraseña, nombre, apellido, edad, genero));
+}
+
+    public static ArrayList<Productos> listaProductos = new ArrayList<>();
+    public static Object[][] datosProductosTabla(){
+        int filas = listaProductos.size();
+        Object[][] tabla = new Object[filas][5];
+
+        for (int i = 0; i < filas; i++){
+            Productos tempProducto= listaProductos.get(i);
+
+            tabla[i][0] = tempProducto.getCodigo();
+            tabla[i][1] = tempProducto.getNombre();
+            tabla[i][2] = tempProducto.getPrecio();
+            tabla[i][3] = tempProducto.getDescripcion();
+            tabla[i][4] = tempProducto.getCantidad();
+
+        }
+
+        return tabla;
+
+    }
+        public static void agregarProductos(String codigo, String nombre, String precio, String descripcion, String cantidad){
+            listaProductos.add(new Productos(codigo, nombre, precio, descripcion, cantidad));
+        }
 
 }

@@ -19,6 +19,7 @@ public class Doctor extends Usuario{
         this.edad = edad;
     }
 
+
     public String getNombres() {
         return nombres;
     }

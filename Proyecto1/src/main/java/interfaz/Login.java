@@ -17,32 +17,47 @@ public class Login extends JFrame {
     public void initComponents() {
 
         setTitle("Inicio de Sesion");
-        setSize(500, 350);
+        setSize(450, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getContentPane().setBackground(new Color(98, 247, 220 ));
+
         setLayout(null);
         setResizable(false);
 
+        //colocar imagen
+        ImageIcon imagenicono = new ImageIcon("src/main/java/imgs/login.png");
+        Image imagenDimension = imagenicono.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        ImageIcon imagenAjustada = new ImageIcon(imagenDimension);
+        setIconImage(imagenAjustada.getImage());
+        JLabel icono = new JLabel(imagenAjustada);
+        icono.setBounds(165, 20, 120, 100);
+        this.add(icono);
+
         JLabel codigoLabel = new JLabel("Codigo");
-        codigoLabel.setBounds(100, 140, 200, 25);
-        add(codigoLabel);
+        codigoLabel.setBounds(75, 140, 200, 25);
+        codigoLabel.setFont(new Font("MV Boli", Font.BOLD, 15));
+        this.add(codigoLabel);
 
         JTextField codigoField = new JTextField();
-        codigoField.setBounds(150, 140, 200, 25);
-        add(codigoField);
+        codigoField.setBounds(130, 140, 200, 25);
+        this.add(codigoField);
 
         JLabel contrasenaLabel = new JLabel("Password");
-        contrasenaLabel.setBounds(80, 180, 200, 25);
-        add(contrasenaLabel);
+        contrasenaLabel.setBounds(55, 180, 200, 25);
+        contrasenaLabel.setFont(new Font("MV Boli", Font.BOLD, 15));
+        this.add(contrasenaLabel);
 
         JPasswordField contrasenaField = new JPasswordField();
-        contrasenaField.setBounds(150, 180, 200, 25);
-        add(contrasenaField);
+        contrasenaField.setBounds(130, 180, 200, 25);
+        this.add(contrasenaField);
 
         JButton registroButton = new JButton("Registrate");
-        registroButton.setBounds(150, 220, 115, 25);
-        registroButton.setBackground(new Color(214, 225, 50));
-        add(registroButton);
+        registroButton.setBounds(130, 220, 115, 25);
+        registroButton.setForeground(Color.black);
+        registroButton.setBackground(new Color(98, 247, 220 ));
+        registroButton.setFont(new Font("MV Boli", Font.PLAIN, 15));
+        this.add(registroButton);
 
         registroButton.addActionListener(e ->{
 
@@ -51,9 +66,10 @@ public class Login extends JFrame {
 
 
         JButton iniciarSesionButton = new JButton("Login");
-        iniciarSesionButton.setBounds(275, 220, 75, 25); //Ajuste de posición
-        iniciarSesionButton.setForeground(Color.WHITE); // Ajuste de color de letra
-        iniciarSesionButton.setBackground(new Color(43, 191, 19)); // Ajuste de color de boton, con color en RGB
+        iniciarSesionButton.setBounds(255, 220, 75, 25); //Ajuste de posición
+        iniciarSesionButton.setForeground(Color.BLACK); // Ajuste de color de letra
+        iniciarSesionButton.setFont(new Font("MV Boli", Font.PLAIN, 15));
+        iniciarSesionButton.setBackground(new Color(147, 255, 183)); // Ajuste de color de boton, con color en RGB
         add(iniciarSesionButton);
 
         iniciarSesionButton.addActionListener(e -> {
@@ -63,7 +79,7 @@ public class Login extends JFrame {
             if (administrador.autenticar(codigo, contrasena)) {
                 //JOptionPane.showMessageDialog(this, "Inicio de Sesión Correcto");
                 SwingUtilities.invokeLater(() -> {
-                    InterfazAdministrador interfazAdministrador = new InterfazAdministrador();
+                    InterfazAdministrador interfazAdministrador = new InterfazAdministrador(0);
                     interfazAdministrador.setVisible(true);
                 });
             }

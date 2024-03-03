@@ -23,7 +23,6 @@ public class Usuario {
     public void setCodigo(java.lang.String codigo) {
 
         this.codigo = codigo;
-        codigo = "0001";
 
     }
     public java.lang.String getContrasena() {
