@@ -1,14 +1,14 @@
 package interfaz;
 
 import clases.Administrador;
-import clases.Paciente;
+import clases.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InterfazRegistroPaciente extends JFrame implements ActionListener {
+public class InterfazCrearPaciente extends JFrame implements ActionListener {
 
     private JTextField nombresField;
     private JTextField apellidosField;
@@ -18,7 +18,7 @@ public class InterfazRegistroPaciente extends JFrame implements ActionListener {
 
     JButton botonRegistro;
 
-    public InterfazRegistroPaciente(){
+    public InterfazCrearPaciente(){
 
         initComponents();
     }
@@ -74,8 +74,8 @@ public class InterfazRegistroPaciente extends JFrame implements ActionListener {
         genderLabel.setBounds(80, 170, 80, 25);
         this.add(genderLabel);
 
-        String[] genders = {"Masculino", "Femenino"};
-        genderComboBox = new JComboBox<>(genders);
+        String[] genderos = {"Masculino", "Femenino"};
+        genderComboBox = new JComboBox<>(genderos);
         genderComboBox.setBounds(130, 170, 150, 25);
         this.add(genderComboBox);
 
@@ -98,11 +98,12 @@ public class InterfazRegistroPaciente extends JFrame implements ActionListener {
             String contrasena = contrasenaField.getText();
             String edad = edadField.getText();
             String genero = (String) genderComboBox.getSelectedItem();
-            Administrador.agregarPacientes(Paciente.codigoPaciente, contrasena, nombres, apellidos, edad, genero);
-            int codigoEntero= Integer.parseInt(Paciente.codigoPaciente);
+            String codigoPaciente = Usuario.codigoGeneral;
+            Administrador.agregarPacientes(Usuario.codigoGeneral, contrasena, nombres, apellidos, edad, genero);
+            int codigoEntero= Integer.parseInt(Usuario.codigoGeneral);
             codigoEntero++;
-            Paciente.codigoPaciente=String.format("%04d", codigoEntero);
-            InterfazAdministrador ventanaAdministrador = new InterfazAdministrador(1);
+            Usuario.codigoGeneral=String.format("%04d", codigoEntero);
+            InterfazCodigoPaciente interfazCodigo = new InterfazCodigoPaciente(codigoPaciente);
             this.dispose();
         }
     }

@@ -2,7 +2,6 @@ package clases;
 
 public class Paciente extends Usuario{
 
-    public static String codigoPaciente = "0001";
     private String nombre;
     private String apellido;
     private String edad;
@@ -15,15 +14,6 @@ public class Paciente extends Usuario{
         this.edad = edad;
         this.genero = genero;
     }
-
-    public static String getCodigoPaciente() {
-        return codigoPaciente;
-    }
-
-    public static void setCodigoPaciente(String codigoPaciente) {
-        Paciente.codigoPaciente = codigoPaciente;
-    }
-
     public String getNombre() {
         return nombre;
     }

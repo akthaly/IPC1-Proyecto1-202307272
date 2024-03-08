@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InterfazRegistroProductos extends JFrame implements ActionListener {
+public class InterfazCrearProductos extends JFrame implements ActionListener {
     private JTextField nombreProducto;
     private JTextField precioProducto;
     private JTextField descripcionProducto;
@@ -16,7 +16,7 @@ public class InterfazRegistroProductos extends JFrame implements ActionListener 
 
     JButton botonCrear;
 
-    public InterfazRegistroProductos(){
+    public InterfazCrearProductos(){
         initComponents();
     }
     public void initComponents(){
@@ -86,7 +86,7 @@ public class InterfazRegistroProductos extends JFrame implements ActionListener 
             int codigoEntero= Integer.parseInt(Productos.codigoProducto);
             codigoEntero++;
             Productos.codigoProducto=String.format("%04d", codigoEntero);
-            InterfazAdministrador ventanaAdministrador = new InterfazAdministrador(2);
+            InterfazModuloAdministrador ventanaAdministrador = new InterfazModuloAdministrador(2);
             this.dispose();
         }
 

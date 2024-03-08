@@ -60,7 +60,11 @@ public class Login extends JFrame {
         this.add(registroButton);
 
         registroButton.addActionListener(e ->{
-
+            SwingUtilities.invokeLater(() -> {
+                InterfazRegistrarNuevoPaciente interfazNuevoAdministrador = new InterfazRegistrarNuevoPaciente();
+                interfazNuevoAdministrador.setVisible(true);
+            });
+            this.dispose();
             System.out.println("Aqui es el Registro");
         });
 
@@ -79,11 +83,13 @@ public class Login extends JFrame {
             if (administrador.autenticar(codigo, contrasena)) {
                 //JOptionPane.showMessageDialog(this, "Inicio de Sesión Correcto");
                 SwingUtilities.invokeLater(() -> {
-                    InterfazAdministrador interfazAdministrador = new InterfazAdministrador(0);
+                    InterfazModuloAdministrador interfazAdministrador = new InterfazModuloAdministrador(0);
                     interfazAdministrador.setVisible(true);
                 });
+                this.dispose();
             }
             else {
+
                 JOptionPane.showMessageDialog(this, "Inicio de Sesión Incorrecto");
             }
 

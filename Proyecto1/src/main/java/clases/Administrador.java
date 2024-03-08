@@ -4,11 +4,14 @@ import java.util.ArrayList;
 
 public class Administrador extends Usuario{
     public static ArrayList<Doctor> listaDoctores = new ArrayList<>();
+    public static ArrayList<Paciente> listaPacientes = new ArrayList<>();
+    public static ArrayList<Productos> listaProductos = new ArrayList<>();
     private String nombre;
     public Administrador(java.lang.String codigo, java.lang.String contrasena, java.lang.String nombre) {
         super(codigo, contrasena);
 
     }
+
     public static Object[][] datosDoctoresTabla(){
         int filas = listaDoctores.size();
         Object[][] tabla = new Object[filas][7];
@@ -35,7 +38,7 @@ public class Administrador extends Usuario{
         listaDoctores.add(new Doctor(codigo, contrasena, nombres, apellidos, especialidad, genero, telefono, edad));
     }
 
-    public static ArrayList<Paciente> listaPacientes = new ArrayList<>();
+
 
     public static Object[][] datosPacientesTabla(){
         int filas = listaPacientes.size();
@@ -59,7 +62,7 @@ public static void agregarPacientes(String codigo,String contraseña, String nom
         listaPacientes.add(new Paciente(codigo, contraseña, nombre, apellido, edad, genero));
 }
 
-    public static ArrayList<Productos> listaProductos = new ArrayList<>();
+
     public static Object[][] datosProductosTabla(){
         int filas = listaProductos.size();
         Object[][] tabla = new Object[filas][5];
@@ -69,9 +72,9 @@ public static void agregarPacientes(String codigo,String contraseña, String nom
 
             tabla[i][0] = tempProducto.getCodigo();
             tabla[i][1] = tempProducto.getNombre();
-            tabla[i][2] = tempProducto.getPrecio();
+            tabla[i][2] = tempProducto.getCantidad();
             tabla[i][3] = tempProducto.getDescripcion();
-            tabla[i][4] = tempProducto.getCantidad();
+            tabla[i][4] = tempProducto.getPrecio();
 
         }
 
@@ -82,4 +85,74 @@ public static void agregarPacientes(String codigo,String contraseña, String nom
             listaProductos.add(new Productos(codigo, nombre, precio, descripcion, cantidad));
         }
 
+    // Busca un doctor en la lista de pacientes por su codigo, si lo encuentra lo devuelve
+    public static Doctor buscarDoctor(String codigo) {
+        for (Doctor doctor : listaDoctores) {
+            if (doctor.getCodigo().equals(codigo)) {
+                return doctor;
+            }
+        }
+        return null;
+    }
+
+    // Busca un doctor por su codigo, cuando lo encuentre entonces reemplaza por los nuevos datos
+    public static boolean actualizarDoctor(Doctor doctorActualizado) {
+        for (int i = 0; i < listaDoctores.size(); i++) {
+            Doctor doctor = listaDoctores.get(i);
+            if (doctor.getCodigo().equals(doctorActualizado.getCodigo())) {
+                listaDoctores.set(i, doctorActualizado);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Busca un paciente en la lista de pacientes por su codigo, si lo encuentra lo devuelve
+    public static Paciente buscarPaciente(String codigo) {
+        for (Paciente paciente : listaPacientes) {
+            if (paciente.getCodigo().equals(codigo)) {
+                return paciente;
+            }
+        }
+        return null;
+    }
+
+    // Busca un paciente por su codigo, cuando lo encuentre entonces reemplaza por los nuevos datos
+
+    public static boolean actualizarPaciente(Paciente pacienteActualizado) {
+        for (int i = 0; i < listaPacientes.size(); i++) {
+            Paciente paciente = listaPacientes.get(i);
+            if (paciente.getCodigo().equals(pacienteActualizado.getCodigo())) {
+                listaPacientes.set(i, pacienteActualizado);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Busca un producto en la lista de pacientes por su codigo, si lo encuentra lo devuelve
+    public static Productos buscarProducto(String codigo) {
+        for (Productos productos : listaProductos) {
+            if (productos.getCodigo().equals(codigo)) {
+                return productos;
+            }
+        }
+        return null;
+    }
+
+    // Busca un producto por su codigo, cuando lo encuentre entonces reemplaza por los nuevos datos
+
+    public static boolean actualizarProducto(Productos productoActualizado) {
+        for (int i = 0; i < listaProductos.size(); i++) {
+            Productos producto = listaProductos.get(i);
+            if (producto.getCodigo().equals(productoActualizado.getCodigo())) {
+                listaProductos.set(i, productoActualizado);
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
+
+

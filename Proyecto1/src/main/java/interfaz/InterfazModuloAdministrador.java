@@ -7,10 +7,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InterfazAdministrador extends JFrame implements ActionListener {
-    private JButton btn_salir;
+public class InterfazModuloAdministrador extends JFrame implements ActionListener {
+    //private JButton btn_salir;
     JButton botonActualizarDoctor, botonRegistroDoctor, botonEliminarDoctor, botonRegistroPaciente, botonActualizarPaciente, botonEliminarPaciente, botonCrearProducto, botonActualizarProducto, botonEliminarProducto;
-    public InterfazAdministrador(int pestaña) {
+    public InterfazModuloAdministrador(int pestaña) {
 
         initComponents();
         JTabbedPane tabbedPane = (JTabbedPane) getContentPane().getComponent(0);
@@ -236,30 +236,38 @@ public class InterfazAdministrador extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == botonActualizarDoctor){
-            JOptionPane.showMessageDialog(this, "Actualizar Doctor");
+            InterfazCodigoActualizarDoctor interfazCodigoActualizarDoctor = new InterfazCodigoActualizarDoctor();
+            this.dispose();
         }
         else if (e.getSource() == botonRegistroDoctor){
-            InterfazRegistroDoctor interfazRegistroDoctor = new InterfazRegistroDoctor();
+            InterfazCrearDoctor interfazRegistroDoctor = new InterfazCrearDoctor();
             this.dispose();
         }
         else if (e.getSource() == botonEliminarDoctor){
             JOptionPane.showMessageDialog(this, "Eliminar Doctor");
         }
         else if (e.getSource() == botonRegistroPaciente){
-            InterfazRegistroPaciente interfazRegistroPaciente = new InterfazRegistroPaciente();
+            InterfazCrearPaciente interfazRegistroPaciente = new InterfazCrearPaciente();
             this.dispose();
         }
         else if (e.getSource() == botonActualizarPaciente){
-            JOptionPane.showMessageDialog(this, "Actualizar Paciente");
+            InterfazCodigoActualizarPaciente interfazCodigoActualizarPaciente = new InterfazCodigoActualizarPaciente();
+            this.dispose();
+            //JOptionPane.showMessageDialog(this, "Actualizar Paciente");
         }
         else if (e.getSource() == botonEliminarPaciente){
             JOptionPane.showMessageDialog(this, "Eliminar Paciente");
         }
         else if (e.getSource()== botonCrearProducto) {
-            InterfazRegistroProductos interfazCrearProductos = new InterfazRegistroProductos();
+            InterfazCrearProductos interfazCrearProductos = new InterfazCrearProductos();
             this.dispose();
         }
-
-
+        else if (e.getSource() == botonActualizarProducto) {
+            InterfazCodigoActualizarProducto interfazCodigoActualizarProducto = new InterfazCodigoActualizarProducto();
+            this.dispose();
+        }
+        else if (e.getSource() == botonEliminarProducto) {
+            JOptionPane.showMessageDialog(this, "Eliminar Producto");
+        }
     }
 }

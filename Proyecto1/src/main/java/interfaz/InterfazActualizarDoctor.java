@@ -8,25 +8,30 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InterfazRegistroDoctor extends JFrame implements ActionListener {
+public class InterfazActualizarDoctor extends JFrame implements ActionListener {
 
-    private JTextField nombresField;
-    private JTextField apellidosField;
-    private JTextField contrasenaField;
-    private JTextField especialidadField;
-    private JTextField telefonoField;
-    private JTextField edadField;
-    private JComboBox<String> genderComboBox;
+        public JTextField nombresField;
+        public JTextField apellidosField;
+        public JTextField contrasenaField;
+        public JTextField especialidadField;
+        public JTextField telefonoField;
+        public JTextField edadField;
+        public JComboBox<String> genderComboBox;
 
-    JButton registerButton;
+        JButton botonActualizar;
 
-    public InterfazRegistroDoctor(){
+        private Doctor doctor;
 
+
+
+    public InterfazActualizarDoctor(Doctor doctor){
+        this.doctor = doctor;
         initComponents();
-    }
+        }
+
     public void initComponents(){
 
-        this.setTitle("Registro de Doctores");
+        this.setTitle("Actualizar Doctor");
         this.setBounds(650, 400, 650, 300);
         this.setLayout(null);
         this.getContentPane().setBackground(new Color(237, 238, 123));
@@ -35,7 +40,7 @@ public class InterfazRegistroDoctor extends JFrame implements ActionListener {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
 
-        JLabel titleLabel = new JLabel("Registro de Doctores");
+        JLabel titleLabel = new JLabel("Actualizar Doctor");
         titleLabel.setFont(new Font("Kristen ITC", Font.BOLD, 20));
         titleLabel.setBounds(200, 10, 300, 30);
         this.add(titleLabel);
@@ -98,33 +103,52 @@ public class InterfazRegistroDoctor extends JFrame implements ActionListener {
         genderComboBox.setBounds(130, 170, 150, 25);
         this.add(genderComboBox);
 
-        registerButton = new JButton("Registrar");
-        registerButton.setBounds(450, 190, 130, 25);
-        registerButton.setForeground(Color.BLACK);
-        registerButton.setFont(new Font("MV Boli", Font.PLAIN, 18));
-        registerButton.setBackground(new Color(147, 255, 183));
-        this.add(registerButton);
-        registerButton.addActionListener(this);
+        botonActualizar = new JButton("Actualizar");
+        botonActualizar.setBounds(450, 190, 130, 25);
+        botonActualizar.setForeground(Color.BLACK);
+        botonActualizar.setFont(new Font("MV Boli", Font.PLAIN, 18));
+        botonActualizar.setBackground(new Color(147, 255, 183));
+        this.add(botonActualizar);
+        botonActualizar.addActionListener(this);
 
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == registerButton){
-            String nombres = nombresField.getText();
-            String apellidos = apellidosField.getText();
-            String contrasena = contrasenaField.getText();
-            String especialidad = especialidadField.getText();
-            String telefono = telefonoField.getText();
-            String edad = edadField.getText();
-            String genero = (String) genderComboBox.getSelectedItem();
-            Administrador.agregarDoctores(Doctor.codigo, contrasena, nombres, apellidos, especialidad, genero, telefono, edad);
-            int codigoEntero= Integer.parseInt(Doctor.codigo);
-            codigoEntero++;
-            Doctor.codigo=String.format("%04d", codigoEntero);
-            InterfazAdministrador ventanaAdministrador = new InterfazAdministrador(0);
+        if (e.getSource() == botonActualizar) {
+            // Obtener los nuevos datos del doctor desde los campos de texto
+            String nuevosNombres = nombresField.getText();
+            String nuevosApellidos = apellidosField.getText();
+            String nuevaContrasena = contrasenaField.getText();
+            String nuevaEspecialidad = especialidadField.getText();
+            String nuevoTelefono = telefonoField.getText();
+            String nuevaEdad = edadField.getText();
+            String nuevoGenero = (String) genderComboBox.getSelectedItem();
+
+            // Actualizar los datos del doctor
+            doctor.setNombres(nuevosNombres);
+            doctor.setApellidos(nuevosApellidos);
+            doctor.setContrasena(nuevaContrasena);
+            doctor.setEspecialidad(nuevaEspecialidad);
+            doctor.setTelefono(nuevoTelefono);
+            doctor.setEdad(nuevaEdad);
+            doctor.setGenero(nuevoGenero);
+
+            // Actualizar la lista de doctores en la clase Administrador
+            boolean actualizacionExitosa = Administrador.actualizarDoctor(doctor);
+
+            if (actualizacionExitosa) {
+                JOptionPane.showMessageDialog(this, "Doctor actualizado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                InterfazModuloAdministrador interfazModuloAdministrador = new InterfazModuloAdministrador(0);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al actualizar el doctor", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            InterfazModuloAdministrador interfazModuloAdministrador = new InterfazModuloAdministrador(0);
             this.dispose();
         }
     }
 }
+

@@ -12,7 +12,6 @@ public class Main {
 
     public static Administrador administrador = new Administrador("admin", "admin", "admin");
 
-
     public static void main(String[] args) {
 
         SwingUtilities.invokeLater(() -> {

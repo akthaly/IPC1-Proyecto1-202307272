@@ -1,6 +1,7 @@
 package clases;
 
 public class Usuario {
+    public static String codigoGeneral = "0001";
     protected String codigo;
     protected String contrasena;
 
