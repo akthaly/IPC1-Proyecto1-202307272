@@ -1,13 +1,16 @@
 package clases;
 
+import interfaz.InterfazModuloPaciente;
+
 import java.util.ArrayList;
 
 public class Administrador extends Usuario{
     public static ArrayList<Doctor> listaDoctores = new ArrayList<>();
     public static ArrayList<Paciente> listaPacientes = new ArrayList<>();
     public static ArrayList<Productos> listaProductos = new ArrayList<>();
+    public static ArrayList<InterfazModuloPaciente> listaCitas = new ArrayList<>();
     private String nombre;
-    public Administrador(java.lang.String codigo, java.lang.String contrasena, java.lang.String nombre) {
+    public Administrador(String codigo, String contrasena, String nombre) {
         super(codigo, contrasena);
 
     }
@@ -81,9 +84,9 @@ public static void agregarPacientes(String codigo,String contraseña, String nom
         return tabla;
 
     }
-        public static void agregarProductos(String codigo, String nombre, String precio, String descripcion, String cantidad){
-            listaProductos.add(new Productos(codigo, nombre, precio, descripcion, cantidad));
-        }
+    public static void agregarProductos(String codigo, String nombre, String precio, String descripcion, String cantidad){
+        listaProductos.add(new Productos(codigo, nombre, precio, descripcion, cantidad));
+    }
 
     // Busca un doctor en la lista de pacientes por su codigo, si lo encuentra lo devuelve
     public static Doctor buscarDoctor(String codigo) {
@@ -152,6 +155,7 @@ public static void agregarPacientes(String codigo,String contraseña, String nom
         }
         return false;
     }
+
 }
 
 

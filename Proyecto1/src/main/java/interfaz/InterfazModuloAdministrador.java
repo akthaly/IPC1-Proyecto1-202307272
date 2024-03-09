@@ -8,8 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InterfazModuloAdministrador extends JFrame implements ActionListener {
-    //private JButton btn_salir;
-    JButton botonActualizarDoctor, botonRegistroDoctor, botonEliminarDoctor, botonRegistroPaciente, botonActualizarPaciente, botonEliminarPaciente, botonCrearProducto, botonActualizarProducto, botonEliminarProducto;
+    JButton botonCerrarSesion, botonActualizarDoctor, botonRegistroDoctor, botonEliminarDoctor, botonRegistroPaciente, botonActualizarPaciente, botonEliminarPaciente, botonCrearProducto, botonActualizarProducto, botonEliminarProducto;
     public InterfazModuloAdministrador(int pestaña) {
 
         initComponents();
@@ -47,6 +46,14 @@ public class InterfazModuloAdministrador extends JFrame implements ActionListene
         pest1.setBackground(new Color(237, 238, 123));
         pest2.setBackground(new Color(237, 238, 123));
         pest3.setBackground(new Color(237, 238, 123));
+
+        //===========================Creacion de Boton Cerrar Sesion============================
+        botonCerrarSesion = new JButton("Cerrar Sesion");
+        botonCerrarSesion.setBounds(1100, 610, 180, 50);
+        botonCerrarSesion.setVisible(true);
+        botonCerrarSesion.setEnabled(true);
+        botonCerrarSesion.addActionListener(this);
+        pest1.add(botonCerrarSesion);
 
 
         //===========================Creacion de Botones Doctor============================
@@ -131,7 +138,7 @@ public class InterfazModuloAdministrador extends JFrame implements ActionListene
         // Alinear vertical y horizontalmente el texto del JLabel al centro
         lbl1.setVerticalAlignment(SwingConstants.CENTER);
         lbl1.setHorizontalAlignment(SwingConstants.CENTER);
-        // Estable_estudiantecer el tamaño de la fuente del JLabel, negrita y tamaño 24
+        // Estable el tamaño de la fuente del JLabel, negrita y tamaño 24
         lbl1.setFont(new Font(lbl1.getFont().getFontName(), Font.BOLD, 24));
         // Hacer que el JLabel sea visible
         lbl1.setVisible(true);
@@ -235,7 +242,12 @@ public class InterfazModuloAdministrador extends JFrame implements ActionListene
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == botonActualizarDoctor){
+        if (e.getSource() == botonCerrarSesion){
+            Login login = new Login();
+            login.setVisible(true);
+            this.dispose();
+        }
+        else if (e.getSource() == botonActualizarDoctor){
             InterfazCodigoActualizarDoctor interfazCodigoActualizarDoctor = new InterfazCodigoActualizarDoctor();
             this.dispose();
         }

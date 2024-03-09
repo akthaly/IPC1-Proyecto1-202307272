@@ -1,6 +1,8 @@
 package interfaz;
 
 import clases.Administrador;
+import clases.Doctor;
+import clases.Paciente;
 import org.example.Main;
 
 import javax.swing.*;
@@ -8,6 +10,7 @@ import java.awt.*;
 
 public class Login extends JFrame {
     Administrador administrador = Main.administrador;
+
 
     public Login (){
         initComponents();
@@ -61,8 +64,8 @@ public class Login extends JFrame {
 
         registroButton.addActionListener(e ->{
             SwingUtilities.invokeLater(() -> {
-                InterfazRegistrarNuevoPaciente interfazNuevoAdministrador = new InterfazRegistrarNuevoPaciente();
-                interfazNuevoAdministrador.setVisible(true);
+                InterfazRegistrarNuevoPaciente interfazNuevoPaciente = new InterfazRegistrarNuevoPaciente();
+                interfazNuevoPaciente.setVisible(true);
             });
             this.dispose();
             System.out.println("Aqui es el Registro");
@@ -80,6 +83,12 @@ public class Login extends JFrame {
             String codigo = codigoField.getText();
             String contrasena = new String(contrasenaField.getPassword());
 
+            // Busca al doctor en la lista de doctores
+            Doctor doctorEncontrado = Administrador.buscarDoctor(codigo);
+
+            // Busca al paciente en la lista de pacientes
+            Paciente pacienteEncontrado = Administrador.buscarPaciente(codigo);
+
             if (administrador.autenticar(codigo, contrasena)) {
                 //JOptionPane.showMessageDialog(this, "Inicio de Sesión Correcto");
                 SwingUtilities.invokeLater(() -> {
@@ -87,8 +96,19 @@ public class Login extends JFrame {
                     interfazAdministrador.setVisible(true);
                 });
                 this.dispose();
-            }
-            else {
+            } else if (doctorEncontrado != null && doctorEncontrado.autenticar(codigo, contrasena)) {
+                SwingUtilities.invokeLater(() -> {
+                    InterfazModuloDoctor interfazDoctor = new InterfazModuloDoctor(0);
+                    interfazDoctor.setVisible(true);
+                });
+                this.dispose();
+            } else if (pacienteEncontrado != null && pacienteEncontrado.autenticar(codigo, contrasena)) {
+                SwingUtilities.invokeLater(() -> {
+                    InterfazModuloPaciente interfazPaciente = new InterfazModuloPaciente(0);
+                    interfazPaciente.setVisible(true);
+                });
+                this.dispose();
+            }  else {
 
                 JOptionPane.showMessageDialog(this, "Inicio de Sesión Incorrecto");
             }

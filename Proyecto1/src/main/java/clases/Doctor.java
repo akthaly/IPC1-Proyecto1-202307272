@@ -17,6 +17,10 @@ public class Doctor extends Usuario{
         this.telefono = telefono;
         this.edad = edad;
     }
+    public Doctor(String codigo, String contrasena, String nombres){
+        super(codigo, contrasena);
+        this.nombres = nombres;
+    }
 
 
     public String getNombres() {

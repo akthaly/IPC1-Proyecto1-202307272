@@ -14,6 +14,10 @@ public class Paciente extends Usuario{
         this.edad = edad;
         this.genero = genero;
     }
+    public Paciente(String codigo, String contrasena, String nombre){
+        super(codigo, contrasena);
+        this.nombre = nombre;
+    }
     public String getNombre() {
         return nombre;
     }
