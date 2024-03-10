@@ -330,11 +330,7 @@ public class InterfazModuloPaciente extends JFrame implements ActionListener {
                 Login login = new Login();
                 login.setVisible(true);
                 this.dispose();
-            }  else {
-                JOptionPane.showMessageDialog(this, "Paciente no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
             }
-
-
     }
 
 }

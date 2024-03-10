@@ -25,7 +25,7 @@ public class InterfazCrearPaciente extends JFrame implements ActionListener {
     public void initComponents(){
 
         this.setTitle("Registro de Pacientes");
-        this.setBounds(650, 400, 650, 300);
+        this.setBounds(650, 400, 400, 350);
         this.setLayout(null);
         this.getContentPane().setBackground(new Color(237, 238, 123));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,52 +35,52 @@ public class InterfazCrearPaciente extends JFrame implements ActionListener {
 
         JLabel titleLabel = new JLabel("Registro de Pacientes");
         titleLabel.setFont(new Font("Kristen ITC", Font.BOLD, 20));
-        titleLabel.setBounds(200, 10, 300, 30);
+        titleLabel.setBounds(100, 10, 300, 30);
         this.add(titleLabel);
 
         JLabel firstNameLabel = new JLabel("Nombre:");
-        firstNameLabel.setBounds(70, 50, 80, 25);
+        firstNameLabel.setBounds(45, 50, 80, 25);
         this.add(firstNameLabel);
 
         nombresField = new JTextField();
-        nombresField.setBounds(130, 50, 170, 25);
+        nombresField.setBounds(125, 50, 150, 25);
         this.add(nombresField);
 
         JLabel lastNameLabel = new JLabel("Apellido:");
-        lastNameLabel.setBounds(70, 90, 80, 25);
+        lastNameLabel.setBounds(45, 90, 80, 25);
         this.add(lastNameLabel);
 
         apellidosField = new JTextField();
-        apellidosField.setBounds(130, 90, 170, 25);
+        apellidosField.setBounds(125, 90, 150, 25);
         this.add(apellidosField);
 
         JLabel contrasenaLabel = new JLabel("Contraseña:");
-        contrasenaLabel.setBounds(50, 130, 80, 25);
+        contrasenaLabel.setBounds(45, 130, 80, 25);
         this.add(contrasenaLabel);
 
         contrasenaField = new JPasswordField();
-        contrasenaField.setBounds(130, 130, 170, 25);
+        contrasenaField.setBounds(125, 130, 150, 25);
         this.add(contrasenaField);
 
         JLabel edadLabel = new JLabel("Edad:");
-        edadLabel.setBounds(390, 130, 80, 25);
+        edadLabel.setBounds(45, 170, 80, 25);
         this.add(edadLabel);
 
         edadField = new JTextField();
-        edadField.setBounds(430, 130, 170, 25);
+        edadField.setBounds(125, 170, 150, 25);
         this.add(edadField);
 
         JLabel genderLabel = new JLabel("Género:");
-        genderLabel.setBounds(80, 170, 80, 25);
+        genderLabel.setBounds(45, 210, 80, 25);
         this.add(genderLabel);
 
         String[] genderos = {"Masculino", "Femenino"};
         genderComboBox = new JComboBox<>(genderos);
-        genderComboBox.setBounds(130, 170, 150, 25);
+        genderComboBox.setBounds(125, 210, 150, 25);
         this.add(genderComboBox);
 
         botonRegistro = new JButton("Registrar");
-        botonRegistro.setBounds(450, 190, 130, 25);
+        botonRegistro.setBounds(125, 250, 150, 25);
         botonRegistro.setForeground(Color.BLACK);
         botonRegistro.setFont(new Font("MV Boli", Font.PLAIN, 18));
         botonRegistro.setBackground(new Color(147, 255, 183));

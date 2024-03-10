@@ -1,14 +1,11 @@
 package clases;
 
-import interfaz.InterfazModuloPaciente;
-
 import java.util.ArrayList;
 
 public class Administrador extends Usuario{
     public static ArrayList<Doctor> listaDoctores = new ArrayList<>();
     public static ArrayList<Paciente> listaPacientes = new ArrayList<>();
     public static ArrayList<Productos> listaProductos = new ArrayList<>();
-    public static ArrayList<InterfazModuloPaciente> listaCitas = new ArrayList<>();
     private String nombre;
     public Administrador(String codigo, String contrasena, String nombre) {
         super(codigo, contrasena);

@@ -6,8 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InterfazModuloDoctor extends JFrame implements ActionListener{
-    JButton botonEditarPerfil, botonMostrarDoctores, botonMostrarHorarios, boton;
-    JComboBox<String> listaEspecialidad, listaDoctor, listaFecha, listaHora;
+    JButton botonCerrarSesion1, botonCerrarSesion2,botonEditarPerfil, botonMostrarDoctores, botonMostrarHorarios, boton;
 
     public InterfazModuloDoctor(int pestaña) {
 
@@ -16,8 +15,7 @@ public class InterfazModuloDoctor extends JFrame implements ActionListener{
         tabbedPane.setSelectedIndex(pestaña);
     }
 
-    public void initComponents(){
-        // Crear un objeto JTabbedPane para gestionar pestañas
+    public void initComponents() {
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 
 
@@ -36,29 +34,33 @@ public class InterfazModuloDoctor extends JFrame implements ActionListener{
         pest1.setBackground(new Color(96, 229, 142));
         pest2.setBackground(new Color(96, 229, 142));
 
+        //=======================Creacion de Botones Cerrar Sesión======================
+        botonCerrarSesion1 = new JButton("Cerrar Sesion");
+        botonCerrarSesion1.setBounds(1125, 600, 150, 30);
+        botonCerrarSesion1.setVisible(true);
+        botonCerrarSesion1.setEnabled(true);
+        botonCerrarSesion1.addActionListener(this);
+        pest1.add(botonCerrarSesion1);
+
+        botonCerrarSesion2 = new JButton("Cerrar Sesion");
+        botonCerrarSesion2.setBounds(1125, 600, 150, 30);
+        botonCerrarSesion2.setVisible(true);
+        botonCerrarSesion2.setEnabled(true);
+        botonCerrarSesion2.addActionListener(this);
+        pest2.add(botonCerrarSesion2);
+
 
 
         //===========================Pestaña 1============================
-        // Titulo
-        // Crear un nuevo JLabel con el texto "Listado Oficial"
         JLabel lbl1 = new JLabel("Listado de doctores");
-        // Estable_estudiantecer la posición y el tamaño del JLabel en el JPanel
+
         lbl1.setBounds(25, 25, 750, 50);
-        // Estable_estudiantecer un borde alrededor del JLabel con un grosor de 2 píxeles y color negro
         lbl1.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        // Estable_estudiantecer el color de fondo del JLabel como Amarillo Claro
         lbl1.setBackground(new Color(237, 238, 123));
-        // Hacer que el JLabel sea opaco para que se pueda ver el color de fondo
-        lbl1.setOpaque(true);
-        // Alinear vertical y horizontalmente el texto del JLabel al centro
         lbl1.setVerticalAlignment(SwingConstants.CENTER);
         lbl1.setHorizontalAlignment(SwingConstants.CENTER);
-        // Estable el tamaño de la fuente del JLabel, negrita y tamaño 24
         lbl1.setFont(new Font(lbl1.getFont().getFontName(), Font.BOLD, 24));
-        // Hacer que el JLabel sea visible
         lbl1.setVisible(true);
-
-        // Agregar el JLabel al JPanel llamado pest1
         pest1.add(lbl1);
 
         //=====================================FALTAN PESTAÑAS=================================0
@@ -76,6 +78,11 @@ public class InterfazModuloDoctor extends JFrame implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==botonCerrarSesion1 || e.getSource()==botonCerrarSesion2){
+            Login login = new Login();
+            login.setVisible(true);
+            this.dispose();
+        }
 
     }
 }

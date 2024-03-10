@@ -21,7 +21,7 @@ public class InterfazCrearProductos extends JFrame implements ActionListener {
     }
     public void initComponents(){
         this.setTitle("Crear Productos");
-        this.setBounds(650, 400, 650, 300);
+        this.setBounds(650, 400, 400, 325);
         this.setLayout(null);
         getContentPane().setBackground(new Color(237, 238, 123));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,45 +31,45 @@ public class InterfazCrearProductos extends JFrame implements ActionListener {
 
         JLabel titleLabel = new JLabel("Crear Productos");
         titleLabel.setFont(new Font("Kristen ITC", Font.BOLD, 20));
-        titleLabel.setBounds(200, 10, 300, 30);
+        titleLabel.setBounds(110, 10, 300, 30);
         this.add(titleLabel);
 
-        JLabel nombreProductoLabel = new JLabel("Nombre");
-        nombreProductoLabel.setBounds(70, 50, 80, 25);
+        JLabel nombreProductoLabel = new JLabel("Nombres:");
+        nombreProductoLabel.setBounds(45, 50, 80, 25);
         this.add(nombreProductoLabel);
 
         nombreProducto = new JTextField();
-        nombreProducto.setBounds(130, 50, 170, 25);
+        nombreProducto.setBounds(125, 50, 150, 25);
         this.add(nombreProducto);
 
-        JLabel precioLabel = new JLabel("Precio");
-        precioLabel.setBounds(70, 90, 80, 25);
+        JLabel precioLabel = new JLabel("Precio:");
+        precioLabel.setBounds(45, 90, 80, 25);
         this.add(precioLabel);
 
         precioProducto = new JTextField();
-        precioProducto.setBounds(130, 90, 170, 25);
+        precioProducto.setBounds(125, 90, 150, 25);
         this.add(precioProducto);
 
-        JLabel descripcionLabel = new JLabel("Descripcion");
-        descripcionLabel.setBounds(350, 50, 80, 25);
+        JLabel descripcionLabel = new JLabel("Descripcion:");
+        descripcionLabel.setBounds(45, 130, 80, 25);
         this.add(descripcionLabel);
 
         descripcionProducto = new JTextField();
-        descripcionProducto.setBounds(430, 50, 170, 25);
+        descripcionProducto.setBounds(125, 130, 150, 25);
         this.add(descripcionProducto);
 
-        JLabel cantidadLabel = new JLabel("Cantidad");
-        cantidadLabel.setBounds(370, 90, 80, 25);
+        JLabel cantidadLabel = new JLabel("Cantidad:");
+        cantidadLabel.setBounds(45, 170, 80, 25);
         this.add(cantidadLabel);
 
         cantidadProducto = new JTextField();
-        cantidadProducto.setBounds(430, 90, 170, 25);
+        cantidadProducto.setBounds(125, 170, 150, 25);
         this.add(cantidadProducto);
 
         botonCrear = new JButton("Crear");
-        botonCrear.setBounds(450, 190, 130, 25);
+        botonCrear.setBounds(125, 225, 150, 25);
         botonCrear.setForeground(Color.BLACK);
-        botonCrear.setFont(new Font("MV Boli", Font.PLAIN, 18));
+        botonCrear.setFont(new Font("MV Boli", Font.PLAIN, 22));
         botonCrear.setBackground(new Color(147, 255, 183));
         this.add(botonCrear);
         botonCrear.addActionListener(this);
