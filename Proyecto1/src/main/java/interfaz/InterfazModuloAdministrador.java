@@ -1,14 +1,23 @@
 package interfaz;
 
 import clases.Administrador;
+import clases.Doctor;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.CategoryLabelPositions;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.List;
+import java.util.*;
 public class InterfazModuloAdministrador extends JFrame implements ActionListener {
-    JButton botonCerrarSesion, botonActualizarDoctor, botonRegistroDoctor, botonEliminarDoctor, botonRegistroPaciente, botonActualizarPaciente, botonEliminarPaciente, botonCrearProducto, botonActualizarProducto, botonEliminarProducto;
+    JButton botonCerrarSesion, botonCerrarSesion1, botonCerrarSesion2, botonActualizarDoctor, botonRegistroDoctor, botonEliminarDoctor, botonRegistroPaciente, botonActualizarPaciente, botonEliminarPaciente, botonCrearProducto, botonActualizarProducto, botonEliminarProducto;
     public InterfazModuloAdministrador(int pestaña) {
 
         initComponents();
@@ -32,15 +41,6 @@ public class InterfazModuloAdministrador extends JFrame implements ActionListene
         tabbedPane.addTab("Pacientes", pest2);
         tabbedPane.addTab("Productos", pest3);
 
-        // Establecer color de fondo para la primera pestaña (Doctores)
-        //tabbedPane.setBackgroundAt(0,new Color(222, 144, 53 ));
-
-        // Establecer color de fondo para la segunda pestaña (Pacientes)
-        //tabbedPane.setBackgroundAt(1, new Color(222, 144, 53 ));
-
-        // Establecer color de fondo para la tercera pestaña (Productos)
-        //tabbedPane.setBackgroundAt(2, new Color(222, 144, 53 ));
-
 
         //====================Color de Fondo para cada pestaña====================
         pest1.setBackground(new Color(237, 238, 123));
@@ -49,15 +49,29 @@ public class InterfazModuloAdministrador extends JFrame implements ActionListene
 
         //===========================Creacion de Boton Cerrar Sesion============================
         botonCerrarSesion = new JButton("Cerrar Sesion");
-        botonCerrarSesion.setBounds(1100, 610, 180, 50);
+        botonCerrarSesion.setBounds(1100, 610, 150, 30);
         botonCerrarSesion.setVisible(true);
         botonCerrarSesion.setEnabled(true);
         botonCerrarSesion.addActionListener(this);
         pest1.add(botonCerrarSesion);
 
+        botonCerrarSesion1 = new JButton("Cerrar Sesion");
+        botonCerrarSesion1.setBounds(1100, 610, 150, 30);
+        botonCerrarSesion1.setVisible(true);
+        botonCerrarSesion1.setEnabled(true);
+        botonCerrarSesion1.addActionListener(this);
+        pest2.add(botonCerrarSesion1);
+
+        botonCerrarSesion2 = new JButton("Cerrar Sesion");
+        botonCerrarSesion2.setBounds(1100, 610, 150, 30);
+        botonCerrarSesion2.setVisible(true);
+        botonCerrarSesion2.setEnabled(true);
+        botonCerrarSesion2.addActionListener(this);
+        pest3.add(botonCerrarSesion2);
+
 
         //===========================Creacion de Botones Doctor============================
-        botonRegistroDoctor = new JButton("Crear");
+        botonRegistroDoctor = new JButton("Crear Doctor");
         botonRegistroDoctor.setBounds(800, 25, 180, 50);
         botonRegistroDoctor.setVisible(true);
         botonRegistroDoctor.setEnabled(true);
@@ -124,112 +138,106 @@ public class InterfazModuloAdministrador extends JFrame implements ActionListene
 
 
         //===========================Pestaña 1============================
-        // Titulo
-        // Crear un nuevo JLabel con el texto "Listado Oficial"
         JLabel lbl1 = new JLabel("Listado de doctores");
-        // Estable_estudiantecer la posición y el tamaño del JLabel en el JPanel
         lbl1.setBounds(25, 25, 750, 50);
-        // Estable_estudiantecer un borde alrededor del JLabel con un grosor de 2 píxeles y color negro
         lbl1.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        // Estable_estudiantecer el color de fondo del JLabel como Amarillo Claro
         lbl1.setBackground(new Color(237, 238, 123));
-        // Hacer que el JLabel sea opaco para que se pueda ver el color de fondo
-        lbl1.setOpaque(true);
-        // Alinear vertical y horizontalmente el texto del JLabel al centro
         lbl1.setVerticalAlignment(SwingConstants.CENTER);
         lbl1.setHorizontalAlignment(SwingConstants.CENTER);
-        // Estable el tamaño de la fuente del JLabel, negrita y tamaño 24
         lbl1.setFont(new Font(lbl1.getFont().getFontName(), Font.BOLD, 24));
-        // Hacer que el JLabel sea visible
         lbl1.setVisible(true);
-
-        // Agregar el JLabel al JPanel llamado pest1
         pest1.add(lbl1);
 
-        //Tabla
-        // Crear un modelo de tabla y agregar datos de ejemplo
+
         String[] columnsNames = {"Codigo", "Nombre", "Apellido", "Género", "Edad", "Especialidad", "Teléfono"};
-        // Crear una instancia de JTable con los datos y nombres de columna
         JTable tablaDoctores = new JTable(Administrador.datosDoctoresTabla(), columnsNames);
-
-        // Crear un JScrollPane para la tabla (permite desplazarse por la tabla si es necesario)
         JScrollPane scrollPane = new JScrollPane(tablaDoctores);
-
         scrollPane.setBounds(25, 80, 750, 570);
-
         pest1.add(scrollPane);
 
         //===========================Pestaña 2============================
-        // Titulo
-        // Crear un nuevo JLabel con el texto "Listado Oficial"
+
         JLabel lbl2 = new JLabel("Lista de Pacientes");
-        // Estable_estudiantecer la posición y el tamaño del JLabel en el JPanel
         lbl2.setBounds(25, 25, 750, 50);
-        // Estable_estudiantecer un borde alrededor del JLabel con un grosor de 2 píxeles y color negro
         lbl2.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        // Estable_estudiantecer el color de fondo del JLabel como Amarillo Claro
         lbl2.setBackground(new Color(237, 238, 123));
-        // Hacer que el JLabel sea opaco para que se pueda ver el color de fondo
-        lbl2.setOpaque(true);
-        // Alinear vertical y horizontalmente el texto del JLabel al centro
         lbl2.setVerticalAlignment(SwingConstants.CENTER);
         lbl2.setHorizontalAlignment(SwingConstants.CENTER);
-        // Estable_estudiantecer el tamaño de la fuente del JLabel, negrita y tamaño 24
         lbl2.setFont(new Font(lbl2.getFont().getFontName(), Font.BOLD, 24));
-        // Hacer que el JLabel sea visible
         lbl2.setVisible(true);
         pest2.add(lbl2);
 
         String[] columnsNames1 = {"Codigo", "Nombre", "Apellido", "Edad", "Genero"};
-        // Crear una instancia de JTable con los datos y nombres de columna
         JTable table_Pacientes = new JTable(Administrador.datosPacientesTabla(), columnsNames1);
-
-        // Crear un JScrollPane para la tabla (permite desplazarse por la tabla si es necesario)
         JScrollPane scrollPane1 = new JScrollPane(table_Pacientes);
-
         scrollPane1.setBounds(25, 80, 750, 570);
-
         pest2.add(scrollPane1);
 
 
         //===========================Pestaña 3============================
 
-        // Titulo
-        // Crear un nuevo JLabel con el texto "Listado Oficial"
         JLabel lbl3 = new JLabel("Lista de Productos");
-        // Estable_estudiantecer la posición y el tamaño del JLabel en el JPanel
         lbl3.setBounds(25, 25, 750, 50);
-        // Estable_estudiantecer un borde alrededor del JLabel con un grosor de 2 píxeles y color negro
         lbl3.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        // Estable_estudiantecer el color de fondo del JLabel como Amarillo Claro
         lbl3.setBackground(new Color(237, 238, 123));
-        // Hacer que el JLabel sea opaco para que se pueda ver el color de fondo
-        lbl3.setOpaque(true);
-        // Alinear vertical y horizontalmente el texto del JLabel al centro
         lbl3.setVerticalAlignment(SwingConstants.CENTER);
         lbl3.setHorizontalAlignment(SwingConstants.CENTER);
-        // Estable_estudiantecer el tamaño de la fuente del JLabel, negrita y tamaño 24
         lbl3.setFont(new Font(lbl3.getFont().getFontName(), Font.BOLD, 24));
-        // Hacer que el JLabel sea visible
         lbl3.setVisible(true);
         pest3.add(lbl3);
 
         String[] columnsNames2 = {"Codigo", "Nombre", "Cantidad", "Descripción", "Precio"};
-        // Crear una instancia de JTable con los datos y nombres de columna
         JTable table_Productos = new JTable(Administrador.datosProductosTabla(), columnsNames2);
-
-        // Crear un JScrollPane para la tabla (permite desplazarse por la tabla si es necesario)
         JScrollPane scrollPane2 = new JScrollPane(table_Productos);
-
         scrollPane2.setBounds(25, 80, 750, 570);
-
         pest3.add(scrollPane2);
 
 
-
         //==================================================================================0
+
         // Agregar el JTabbedPane al contenido del JFrame
         getContentPane().add(tabbedPane);
+
+        //--------------GRAFICA PARA DOCTORES------------
+        DefaultCategoryDataset datos_Especialidad = new DefaultCategoryDataset();
+
+        Map<String, Integer> especialidades = new HashMap();
+        for (Doctor doctores : Administrador.listaDoctores) {
+            String espec = doctores.getEspecialidad();
+
+            if (especialidades.containsKey(espec)) {
+                // Incrementar el contador si la especialidad ya está en el mapa
+                especialidades.put(espec, especialidades.get(espec) + 1);
+            } else {
+                // Agregar la especialidad al mapa con contador 1 si no existe
+                especialidades.put(espec, 1);
+            }
+        }
+
+        List<Map.Entry<String, Integer>> listaOrdenada = new ArrayList<>(especialidades.entrySet());
+        Collections.sort(listaOrdenada, Comparator.comparing(Map.Entry::getValue, Comparator.reverseOrder()));
+
+        int contador = 0;
+        for (Map.Entry<String, Integer> dato_mapa : listaOrdenada) {
+            contador++;
+            // (valor que va a tener en la grafica)
+            datos_Especialidad.addValue(dato_mapa.getValue(), dato_mapa.getKey(), dato_mapa.getKey());
+
+            if (contador == 5) {
+                break;
+            }
+
+        }
+
+        JFreeChart graficaEspecialidades = ChartFactory.createBarChart("Top 5 Especialidades", "Especialidad", "Cantidad", datos_Especialidad);
+
+        CategoryPlot grafica = graficaEspecialidades.getCategoryPlot();
+        CategoryAxis xAxis = grafica.getDomainAxis();
+        xAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_45);
+
+        ChartPanel chartPanel = new ChartPanel(graficaEspecialidades);
+        chartPanel.setBounds(810, 200, 400, 400);
+        pest1.add(chartPanel);
 
 
         //------------Creando JFrame------------------
@@ -242,7 +250,7 @@ public class InterfazModuloAdministrador extends JFrame implements ActionListene
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == botonCerrarSesion){
+        if (e.getSource() == botonCerrarSesion || e.getSource() == botonCerrarSesion1 || e.getSource() == botonCerrarSesion2){
             Login login = new Login();
             login.setVisible(true);
             this.dispose();

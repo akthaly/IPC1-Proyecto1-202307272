@@ -11,8 +11,7 @@ import javax.swing.*;
 public class Main {
 
     public static Administrador administrador = new Administrador("admin", "admin", "admin");
-    //public static Doctor doctor = new Doctor( "doctor", "doctor", "doctor");
-    //public static Paciente paciente = new Paciente("0001", "paciente", "paciente");
+
     public static void main(String[] args) {
 
         SwingUtilities.invokeLater(() -> {
